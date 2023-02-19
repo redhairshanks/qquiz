@@ -1,0 +1,10 @@
+## This is an AUTO-GENERATED file
+## All changes made to it will be overwritten in next deployment.---
+default:
+  permissions: &1
+development:
+  permissions: *1
+test:
+  permissions: *1
+production:
+  permissions: *1

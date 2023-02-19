@@ -1,0 +1,11 @@
+default: &default
+  redis:
+    host: <%= ENV["QQUIZ_REDIS_HOST"] %>
+    namespace: <%= ENV["QQUIZ_REDIS_NAMESPACE"] %>
+    port: <%= ENV["QQUIZ_REDIS_PORT"] %>
+test:
+  <<: *default
+development:
+  <<: *default
+production:
+  <<: *default
