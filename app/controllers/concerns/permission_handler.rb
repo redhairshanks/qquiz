@@ -4,12 +4,7 @@ module PermissionHandler
     if request.headers.present? && request.headers['x-session-id'].present?
       session_data = User.find_by_session(request.headers['x-session-id'])
       @current_user = session_data[:user]
-      permissions = session_data[:permissions].present? ? session_data[:permissions].map{|z| z.permission} : []
-      if @current_user.present?
-        if is_not_permitted?(permissions)
-          error_handler({user: ["Permission denied, attempt will be reported"]}, :unauthorized)
-        end
-      else
+      unless @current_user.present?
         error_handler({user: ["Invalid session, Please login again"]}, :forbidden)
       end
     else
