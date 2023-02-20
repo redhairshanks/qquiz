@@ -25,9 +25,7 @@ group :development do
 end
 
 group :production do
-  gem 'resque', '~> 2.2'
-  gem 'resque-scheduler', '~> 4.0'
-  gem 'active_scheduler', '~> 0.7.0'
+
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
