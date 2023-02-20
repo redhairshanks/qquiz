@@ -2,6 +2,7 @@
 
 ## Tech stack used
 * Ruby on Rails, Postgres, Redis
+* Hosted on AWS EC2 (ubuntu ami)
 
 ## Backend Considerations
 * Used redis to store sessions which expire after 3 hours
@@ -9,6 +10,10 @@
 * Currently hosted on AWS with both postgres and redis on single EC2 machine to complexity
 * Have put in controller level and database level validations wherever necessary
 
+## Did not attempt
+* Testing and error logging. While I have put in honey badger gem but not configured it for usage
+* Unit testing, end to end testing avoided due to time constraint 
+* Micro-service based architecture could have been attempted but avoided in favor of rails monolith 
 
 ## Database Design
 
@@ -67,3 +72,4 @@
 * Time bound quiz, quiz start_time can be made changeable
 * Multiple contributors for a quiz
 * Final score of candidates can be calculated using background jobs 
+* Testing, logging framework
