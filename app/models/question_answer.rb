@@ -10,7 +10,6 @@ class QuestionAnswer < ApplicationRecord
 
     count_answers = 0
     options.each_with_index do |option, idx|
-      puts "OPTION = #{option}"
       unless option[:text].present?
         raise PollException::GeneratedException.new "Options text is compulsory"
       end
