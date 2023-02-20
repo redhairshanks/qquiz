@@ -3,6 +3,8 @@ default: &default
     host: <%= ENV["QQUIZ_REDIS_HOST"] %>
     namespace: <%= ENV["QQUIZ_REDIS_NAMESPACE"] %>
     port: <%= ENV["QQUIZ_REDIS_PORT"] %>
+  host:
+    root: "http://localhost:3000/"
 test:
   <<: *default
 development:
