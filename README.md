@@ -4,6 +4,16 @@
 * Ruby on Rails, Postgres, Redis
 * Hosted on AWS EC2 (ubuntu ami)
 
+## Features supported
+* User can register and sign-in with session capabilities. Every session lasts 3 hours
+* User can create polls/quiz which can have multiple questions and their answers
+* User can start/end the poll
+* User can answer questions within a poll
+* Once quiz has ended, questions cannot be answered anymore by that user
+* Polls can be shared with a link which has expiry setup of 7 days. 
+* Poll results can be fetched
+* Poll and question+options can be fetched at once
+
 ## Backend Considerations
 * Used redis to store sessions which expire after 3 hours
 * Also used redis to store the shareable link id which expires after 7 days
