@@ -28,7 +28,7 @@ class PollController < ApplicationController
         if poll_participant.present? && poll_participant.errors.blank?
           success_handler({poll_participant: {poll_id: poll_participant[:poll_id],
                                               user_id: poll_participant[:user_id],
-                                              start_time: poll_participant[:start_time]})}, nil)
+                                              start_time: poll_participant[:start_time]}}, nil)
         else
           error_handler({poll_participant: poll_participant.errors.messages}, :bad_request)
         end
