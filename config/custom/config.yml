@@ -14,4 +14,4 @@ development:
 production:
   <<: *default
   host:
-    root: "http://localhost:4000"
+    root: "http://3.109.62.223:3000"
