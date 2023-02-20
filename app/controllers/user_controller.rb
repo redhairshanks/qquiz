@@ -8,7 +8,7 @@ class UserController < ApplicationController
       else
         user = User.create(name: params[:name], email: params[:email], password: params[:password])
         if user.present? && user.errors.blank?
-          success_handler({user: user}, nil)
+          success_handler({user: {name: user[:name], email: user[:email]}}, nil)
         else
           error_handler({user: user.errors.messages}, :bad_request)
         end
