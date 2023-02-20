@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   has_secure_password
-  validates :name, format: { with: /\A[a-zA-Z]+\z/, message: "Only allows alphabets" }, presence: true
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   before_save :b_save
