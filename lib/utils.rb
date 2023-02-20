@@ -22,4 +22,19 @@ class Utils
     Rails.cache.delete(k)
   end
 
+  class StringUtility
+    def self.is_date?(dt)
+      begin
+        Date.parse(dt)
+        true
+      rescue ArgumentError
+        false
+      end
+    end
+
+    def self.is_email?(str)
+      str.to_s.match(URI::MailTo::EMAIL_REGEXP).present?
+    end
+  end
+
 end
