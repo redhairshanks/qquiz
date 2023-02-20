@@ -9,17 +9,14 @@ class QuestionAnswer < ApplicationRecord
     end
 
     count_answers = 0
-    options.each_with_index do |option, indx|
+    options.each_with_index do |option, idx|
+      puts "OPTION = #{option}"
       unless option[:text].present?
-        raise PollException::GeneratedException.new "Options text is compulsory at index:#{indx}"
-      end
-
-      unless option[:is_answer].present?
-        raise PollException::GeneratedException.new "Option is_answer is compulsory at index:#{indx}"
+        raise PollException::GeneratedException.new "Options text is compulsory"
       end
 
       unless option[:is_answer] == "true" || option[:is_answer] == "false" || option[:is_answer] == true || option[:is_answer] == false
-        raise PollException::GeneratedException.new "Option is_answer is must be true/false at Option:#{indx}"
+        raise PollException::GeneratedException.new "Option is_answer is must be true/false"
       end
 
       if option[:is_answer] == true || option[:is_answer] == "true"
@@ -32,6 +29,4 @@ class QuestionAnswer < ApplicationRecord
     end
 
   end
-
-
 end

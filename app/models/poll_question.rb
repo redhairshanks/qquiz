@@ -2,23 +2,23 @@ class PollQuestion < ApplicationRecord
 
   belongs_to :poll
   validates :points, numericality: { only_integer: true }
+  has_many :question_answers
 
 
-  enum type: {
-    multiple_choice: "multiple_choice",
-    radio: "radio",
-    text: "text"
-  }
-
-  def create_question(poll, text, type, points, options)
-    QuestionAnswer.validate_options(options)
-    question = nil
+  def self.create_question(poll, text, points, ans_options)
+    QuestionAnswer.validate_options(ans_options)
+    result = {
+      question: nil,
+      options: []
+    }
     ActiveRecord::Base.transaction do
-      question = Question.create(question_text: text, type: type, points: points, poll: poll)
-      options.each_with_index do |option, indx|
-        QuestionAnswer.create(poll: poll, poll_question: question, placement_index: indx, answer_text: option[:text], is_answer: option[:is_answer])
+      question = PollQuestion.create(question_text: text, points: points, poll: poll)
+      result[:question] = question
+      ans_options.each_with_index do |option, indx|
+        qa = QuestionAnswer.create(poll_question: question, placement_index: indx, answer_text: option[:text], is_answer: option[:is_answer])
+        result[:options].push(qa)
       end
     end
-    question
+    result
   end
 end
