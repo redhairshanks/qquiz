@@ -23,9 +23,10 @@ class PollController < ApplicationController
       if poll.present?
         poll_participant = PollParticipant.find_or_initialize_by(user: @current_user, poll: poll)
         poll_participant.start_time = DateTime.now
+        poll_participant.final_score = 0
         poll_participant.save
         if poll_participant.present? && poll_participant.errors.blank?
-          success_handler({poll_participant: poll_participant}, nil)
+          success_handler({poll_participant: poll_participant.select(:poll_id, :user_id, :start_time)}, nil)
         else
           error_handler({poll_participant: poll_participant.errors.messages}, :bad_request)
         end
